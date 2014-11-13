@@ -1,0 +1,31 @@
+<h1 class="page-header">
+    <span class="glyphicon glyphicon-flash"></span> Ma prise radiocommandée
+</h1>
+
+<div class="row">
+    <form id="main" role="form" data-ng-submit="submit()">
+        <div class="form-group">
+            <div class="input-group col-xs-3 col-sm-3 col-md-3">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name" class="form-control" placeholder="ex. Salon, Chambre des parents..." ng-model="plugService.plug.name" required>
+            </div>
+        </div>
+    </form>
+
+    <hr/>
+
+    <tabset>
+        <tab class="ng-tab" heading="Configuration" data-ui-sref="main.plug.settings"></tab>
+        <tab class="ng-tab" heading="Programmation" data-ui-sref="main.plug.slots"></tab>
+        <tab class="ng-tab" heading="Appareils" data-ui-sref="main.plug.devices"></tab>
+    </tabset>
+
+    <div class="panel panel-default">
+        <div class="panel-body" data-ui-view></div>
+    </div>
+
+    <input type="button" value="Retour aux plugs" class="btn btn-warning" ui-sref="main.plugs" />
+    <input form="main" ng-if="((action == 'edit') && modified)" type="submit" value="Enregistrer" class="btn btn-success animated bounceIn" />
+    <input form="main" ng-if="(action == 'new')" type="submit" value="Créer" class="btn btn-success" />
+    
+</div>

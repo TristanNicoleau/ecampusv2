@@ -1,0 +1,18 @@
+.clock {
+width:400px;
+height:400px;
+border: 1px solid black;
+}
+
+.get {
+display:none;
+}
+
+
+/* ------ anchors
+-----------------------------------------------*/
+
+.clock a {
+text-decoration:none;
+color:#333;
+}

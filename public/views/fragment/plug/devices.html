@@ -1,0 +1,46 @@
+<h4>Appareils utilisés sur la prise</h4>
+
+<hr />
+
+<table class="table table-hover text-center table-bordered" ng-show="plugService.plug.devices.length > 0">
+
+    <thead>
+      <tr>
+        <th class="col-md-3 text-center">Type</th>
+        <th class="col-md-3 text-center">Nom</th>
+        <th class="col-md-2 text-center">Puissance (en Watts)</th>
+        <th class="col-md-2 text-center">Modifier</th>
+        <th class="col-md-2 text-center">Supprimer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="device in plugService.plug.devices">
+        <td>{{ device.type }}</td>
+        <td>{{ device.name }}</td>
+        <td>{{ device.power }} Watts</td>
+        <td>
+            <button type="button" class="btn btn-warning btn-xs" ng-click="modalDevice(device)">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger btn-xs" ng-click="removeDevice($index)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+        <tr class="active">
+            <th colspan="2" class="text-right">Puissance totale : </th>
+            <th class="text-center">{{ plugService.getTotalPower() }} Watts</th>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div class="alert alert-danger" role="alert" ng-show="plugService.plug.devices.length <= 0">Aucun appareil sur cette prise actuellement...</div>
+
+<button type="button" class="btn btn-warning pull-right" ng-click="modalDevice()">Ajouter un appareil</button>

@@ -1,0 +1,33 @@
+.input-xs {
+    height: 22px;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.duration{
+    font-size: 10px;
+    font-style: italic;
+    color: #888;
+}
+
+table#horaires-table td{
+    vertical-align: middle;
+}
+
+.form{
+	margin-top:15px;
+}
+
+.input-group-addon{
+	top: 0px;
+}
+
+.ng-tab {
+    cursor: pointer;
+}
+
+.text-white{
+    color: #fff;
+}

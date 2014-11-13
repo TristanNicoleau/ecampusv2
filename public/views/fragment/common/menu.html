@@ -1,0 +1,17 @@
+
+<h3 class="muted"> Bienvenue {{ user.username }}</h3>
+<ul class="nav nav-sidebar">
+    <li ng-class="{ active : path == 'main.home' }"><a ui-sref="main.home">Mon domicile</a></li>
+    <li ng-class="{ active : path == 'main.thermostat' }"><a ui-sref="main.thermostat">Thermostat</a></li>
+    <li ng-class="{ active : path.indexOf('main.plug') != -1 }"><a ui-sref="main.plugs">Prises radiocommandées</a></li>
+    <li ng-class="{ active : path == 'main.manual' }"><a ui-sref="main.manual">Mode manuel</a></li>
+</ul>
+<ul class="nav nav-sidebar">
+    <li ng-class="{ active : path == 'main.profile' }"><a ui-sref="main.profile">Mon profil</a></li>
+    <li ng-class="{ active : path == 'main.settings' }"><a ui-sref="main.settings">Réglages</a></li>
+</ul>
+<div class="row">
+    <div class="col-md-12" ng-controller="AuthCtrl">
+        <a ng-click="auth.logout()" class="btn btn-lg btn-primary btn-block">Déconnexion</a>
+    </div>
+</div>

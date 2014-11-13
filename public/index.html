@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="location">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Location</title>
+  <!-- <link rel="stylesheet" href="css/template.css"> -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/clock.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/animate.css">
+
+  <!-- Just for debugging purposes. Don't actually copy this line! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+
+    <body data-ng-controller="GlobalCtrl" >
+
+      <!-- Navigation Bar -->
+      <div ng-include="'views/fragment/common/navigation-bar.html'"></div>
+
+      <!-- Container -->
+      <div class="container-fluid">
+        <div class="starter-template" data-ui-view>
+        </div>
+      </div>
+      
+    </body>
+
+    <!-- JS Placed at the end of the document so the pages load faster -->
+    <script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.min.js" type="text/javascript"></script>
+    <script src="bower_components/lodash/dist/lodash.min.js" type="text/javascript"></script>
+    <script src="bower_components/restangular/dist/restangular.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+    <script src="bower_components/raphael/raphael-min.js" type="text/javascript"></script>
+    <script src="bower_components/cryptojs/rollups/sha3.js" type="text/javascript"></script>
+    <script src="bower_components/moment/min/moment.min.js" type="text/javascript"></script>
+    <script src="bower_components/moment/lang/fr.js" type="text/javascript"></script>
+    <script src="bower_components/twix/bin/twix.js" type="text/javascript"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+
+    <!-- // <script src="dest/location.min.js" type="text/javascript"></script> -->
+
+    <!-- APP -->
+    <script src="app/app.js" type="text/javascript"></script>
+    <!-- SERVICE -->
+    <script src="app/services/users/AccountService.js" type="text/javascript"></script>
+    <script src="app/services/plugs/PlugListService.js" type="text/javascript"></script>
+    <script src="app/services/plugs/PlugService.js" type="text/javascript"></script>
+    <script src="app/services/plugs/SlotService.js" type="text/javascript"></script>
+    <script src="app/services/settings/ServerSettings.js" type="text/javascript"></script>
+    <script src="app/services/settings/ApplicationSettings.js" type="text/javascript"></script>
+    <script src="app/services/auth/AuthService.js" type="text/javascript"></script>
+    <script src="app/services/auth/AccessService.js" type="text/javascript"></script>
+    <script src="app/services/modals/ModalService.js" type="text/javascript"></script>
+    <script src="app/services/third-party/CryptoService.js" type="text/javascript"></script>
+    <script src="app/services/third-party/MomentService.js" type="text/javascript"></script>
+    <!-- CONTROLLERS -->
+    <script src="app/controllers/auth/AuthCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/common/GlobalCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/common/MenuCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/plugs/DeviceCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/plugs/SlotCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/plugs/PlugCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/plugs/PlugListCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/users/AccountCtrl.js" type="text/javascript"></script>
+    <script src="app/controllers/users/UserListCtrl.js" type="text/javascript"></script>
+    <!-- DIRECTIVES -->
+    <script src="app/directives/clock/ClockDirective.js" type="text/javascript"></script>
+    <!-- FILTERS -->
+    <script src="app/filters/TimeFilter.js" type="text/javascript"></script>
+    </html>

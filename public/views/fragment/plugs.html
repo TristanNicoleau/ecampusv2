@@ -1,0 +1,53 @@
+<!-- Content -->
+<h1 class="page-header">
+  <span class="glyphicon glyphicon-flash"></span> Prises radiocommandées
+</h1>
+
+<clock ng-show="plugListService.plugs.length > 0" plugListService="plugListService" data-animate="true" data-debug="true"></clock>
+<p>Vous avez actuellement {{ plugListService.plugs.length }} prise(s) enregistrée(s)</p>
+
+<div class="table-responsive" ng-show="plugListService.plugs.length > 0">
+  <table class="table text-center table-bordered">
+    <thead>
+      <tr>
+        <th class="col-md-2 text-center">Nom</th>
+        <th class="col-md-3 text-center">Numéro</th>
+        <th class="col-md-2 text-center">Nombre d'appareils</th>
+        <th class="col-md-2 text-center">Consommation hebdo.</th>
+        <th class="col-md-1 text-center">Statut</th>
+        <th class="col-md-1 text-center">Modifier</th>
+        <th class="col-md-1 text-center">Supprimer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="plug in plugListService.plugs" ng-click="selectArc()">
+        <td>{{ plug.name }}</td>
+        <td>{{ plug.plugNumber }}</td>
+        <td>{{ plug.devices.length }}</td>
+        <td>{{ plugListService.getPlugWeeklyConsumption($index) }} kWh</td>
+        <td class="bg-danger">{{ plug.status | uppercase }}</td>
+        <td>
+          <button type="button" class="btn btn-warning btn-xs" ui-sref="main.plug({ index : $index, action : 'edit' })">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-xs" ng-click="plugListService.removePlug(plug);$event.stopPropagation()">
+            <span class="glyphicon glyphicon-remove"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+        <tr class="active">
+            <th colspan="3" class="text-right">Consommation hebdomadaire totale : </th>
+            <th class="text-center">{{ plugListService.getTotalWeeklyConsumption() }} kWh</th>
+        </tr>
+    </tfoot>
+
+  </table>
+</div>
+
+<button class="btn btn-success" ui-sref="main.plug({ action : 'new', index : '' })">Ajouter une prise</button>

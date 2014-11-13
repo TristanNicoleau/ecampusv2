@@ -1,0 +1,50 @@
+<h4>Créneaux horaires de programmation</h4>
+
+<hr />
+
+<table class="table table-hover text-center table-bordered" ng-show="plugService.plug.slots.length > 0">
+
+    <thead>
+      <tr>
+        <th class="col-md-2 text-center">Jour d'activation</th>
+        <th class="col-md-2 text-center">Heure d'activation</th>
+        <th class="col-md-2 text-center">Jour d'extinction</th>
+        <th class="col-md-2 text-center">Heure d'extinction</th>
+        <th class="col-md-2 text-center">Durée du créneau</th>
+        <th class="col-md-1 text-center">Modifier</th>
+        <th class="col-md-1 text-center">Supprimer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="slot in plugService.plug.slots">
+        <td>{{ slot.weekdayStart.name }}</td>
+        <td>{{ slot.timeStart | date:'HH:mm' }}</td>
+        <td>{{ slot.weekdayEnd.name }}</td>
+        <td>{{ slot.timeEnd | date:'HH:mm' }}</td>
+        <td>{{ ((slot.weekdayEnd.value - slot.weekdayStart.value) * 86400000) + (slot.timeEnd - slot.timeStart) | TimeFilter }}</td>
+        <td>
+            <button type="button" class="btn btn-warning btn-xs" ng-click="modalSlot(slot)">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-danger btn-xs" ng-click="removeSlot($index)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+        <tr class="active">
+            <th colspan="4" class="text-right">Durée d'activation totale : </th>
+            <th class="text-center">{{ plugService.getTotalActivation() | TimeFilter }}</th>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div class="alert alert-danger" role="alert" ng-show="plugService.plug.slots.length <= 0">Aucun créneau d'activation sur cette prise actuellement...</div>
+
+<button type="button" class="btn btn-warning pull-right" ng-click="modalSlot()">Ajouter un créneau d'activation</button>

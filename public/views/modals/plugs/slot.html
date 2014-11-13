@@ -1,0 +1,66 @@
+<div class="modal-header bg-primary">
+	<h3 class="">Période d'activation de la prise</h3>
+</div>
+<div class="modal-body">
+
+	<form id="form-slot" role="slot" ng-submit="service.args.slotScope.saveSlot(service.args.slot)">
+
+		<div class="row">
+		  	<div class="col-md-6 text-center">
+		  		<h4>Jour d'activation</h4>
+		  	</div>
+			<div class="col-md-6 text-center">
+				<h4>Heure d'activation</h4>
+			</div>
+		</div>
+
+		<div class="row">
+		  	<div class="col-md-6">
+				<div class="input-group col-md-10 center-block">
+					<select class="form-control" ng-model="service.args.slot.weekdayStart" ng-options="weekday as weekday.name for weekday in service.args.slotScope.weekdays track by weekday.value" required>
+						<option value="">--- choisir le jour ---</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+		        <div class="input-group col-md-5 center-block">
+		        	<timepicker ng-model="service.args.slot.timeStart" show-meridian="false"></timepicker>
+		        </div>
+			</div>
+		</div>
+
+		<hr/>
+
+		<div class="row">
+		  	<div class="col-md-6 text-center">
+		  		<h4>Jour d'extinction {{ service.args.slot.weekdayEnd.name }}</h4>
+		  	</div>
+			<div class="col-md-6 text-center">
+				<h4>Heure d'extinction</h4>
+			</div>
+		</div>
+
+		<div class="row">
+		  	<div class="col-md-6">
+				<div class="input-group col-md-10 center-block">
+					<select class="form-control" ng-model="service.args.slot.weekdayEnd" ng-options="weekday as weekday.name for weekday in service.args.slotScope.weekdays track by weekday.value" required>
+						<option value="">--- choisir le jour ---</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+		        <div class="input-group col-md-5 center-block">
+		        	<timepicker ng-model="service.args.slot.timeEnd" show-meridian="false"></timepicker>
+		        </div>
+			</div>
+		</div>
+		<hr/>
+		<span>Durée du créneau : {{ ((service.args.slot.weekdayEnd.value - service.args.slot.weekdayStart.value) * 86400000) + (service.args.slot.timeEnd - service.args.slot.timeStart) | TimeFilter }}</span>
+	</form>
+</div>
+<div class="modal-footer">
+    <input type="submit" form="form-slot" value="Enregistrer" class="btn btn-success">
+    <input type="button" value="Annuler" class="btn btn-danger" ng-click="service.close()">
+</div>
