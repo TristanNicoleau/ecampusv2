@@ -1,7 +1,3 @@
-module.exports = function(mysql){
-	return  mysql.createConnection({
-	    host     : 'localhost',
-	    user     : 'root',
-	    password : 'root'
-	});
+module.exports = {
+	url: 'mongodb://127.0.0.1:27017/ecampus'
 };

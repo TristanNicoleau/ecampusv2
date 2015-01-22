@@ -1,9 +1,11 @@
 {
-    "name": "ecampusv2",
-    "description": "Ecampus version 2",
-    "version": "0.0.1",
-    "dependencies": {
-        "express": "3.x",
-        "mysql": "*"
-    }
+  "name": "ecampusv2",
+  "description": "Ecampus version 2",
+  "version": "0.0.1",
+  "dependencies": {
+    "cors": "^2.5.2",
+    "express": "3.x",
+    "jsftp": "^1.4.0",
+    "mongoose": "^3.8.20"
+  }
 }

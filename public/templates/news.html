@@ -1,0 +1,59 @@
+<h1>Actualités</h1>
+<p class="lead">Voici les dernières actualités de l'EPSI</p>
+
+<div class="container">
+	<!-- <div class="row">
+		<div class="panel panel-default" class="col-xs-6 col-sm-6 col-md-6">
+		  <div class="panel-body">
+		    
+		  </div>
+		</div>
+	</div> -->
+	<!-- Button trigger modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAddNews">
+		Ajouter une actualité
+	</button>
+
+	<!-- Modal -->
+	<div class="modal fade" id="modalAddNews" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Ajouter une actualité</h4>
+	      </div>
+	      <div class="modal-body">
+	        <form role="form" ng-submit="newsService.add(newsService.currentNews)">
+			  <div class="form-group">
+			    <label for="newsTitle">Titre</label>
+			    <input ng-model="newsService.currentNews.title" type="text" class="form-control" placeholder="Entrez le titre de votre actualité..." required>
+			  </div>
+			  <div class="form-group">
+			    <label for="newsText">Actualité</label>
+			    <textarea ng-model="newsService.currentNews.text" class="form-control" rows="4" required></textarea>
+			  </div>
+			  <button type="submit" class="btn btn-primary">Publier</button>
+			</form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<hr />
+	<div class="row">
+		<h4 class="" ng-hide="newsService.newsList.length > 0">Aucunes actualités disponible</h4>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" ng-repeat="news in newsService.newsList">
+            <div class="box">
+                <div class="box-icon">
+                    <span class="glyphicon glyphicon-send"></span>
+                </div>
+                <div class="info">
+                    <h4 class="">{{news.title}}</h4>
+                    <hr />
+                    <p>{{news.text}}</p>
+                    <hr />
+                    <span class="glyphicon glyphicon-calendar">Posté le {{news.date.toLocaleDateString()}}</span>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
