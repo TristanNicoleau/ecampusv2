@@ -1,10 +1,12 @@
 // Création des modules principaux
 angular.module('ecampusv2.services', ['ngResource']);
 angular.module('ecampusv2.controllers', []);
+// angular.module('ecampusv2.directives', []);
 
 // Module principal
 var app = angular.module('ecampusv2', [
     'ngRoute',
+    'ez.fileTree',
     'ecampusv2.services',
     'ecampusv2.controllers'
 ]);

@@ -15,6 +15,46 @@ var ftp = new jsftp({
   pass: 'epsidebian' // defaults to "@anonymous"
 });
 
+// var fileTree = {
+//   id : 'root',
+//   name : 'Root',
+//   type : 'folder',
+//   children : []
+// };
+
+// //*********************
+// function getDirContent(path, parent_id, child_array){
+//   var children = {};
+//   var inc = 0;
+
+//   ftp.ls("./data/ecampus/" + path, function(err, ftpres) {
+//     ftpres.forEach(function(file) {
+//         var node = {};
+//         node.name = file.name;
+//         node.children = [];
+//         node.id = parseInt(parent_id + '' + inc);
+
+//         if(file.type == 0){
+//             node.type = 'file';
+//         } else {
+//             node.type = 'folder';
+//             getDirContent(path + node.name, node.id, node.children);
+//         }
+
+//         console.log('Node '+inc);
+//         console.log(node);
+//         child_array.push(node);
+//         inc++;
+//     });
+//     console.log(fileTree);
+//   });
+//   return children;
+// }
+
+// getDirContent('', null, fileTree.children);
+
+//*********************
+
 mongoose.connect(database.url); // Connect to MongoDB database
 
 var app = express(); // Create our app with express

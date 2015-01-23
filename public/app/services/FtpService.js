@@ -11,7 +11,7 @@ angular.module('ecampusv2.services').factory('FtpService', function ($http) {
           $http.get('http://localhost:8080/api/ftp').
             success(function(data, status, headers, config) {
               FtpService.fileTree = data;
-              console.log(data);
+              console.log(FtpService.fileTree);
             }).
             error(function(data, status, headers, config) {
               console.log(status);

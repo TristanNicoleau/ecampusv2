@@ -1,4 +1,39 @@
 module.exports = function (ftp) {
+
+    function getDirContent(path, parent_id, callback){
+        var children = [];
+        var inc = 0;
+
+        ftp.ls("./data/ecampus/" + path, function(err, ftpres) {
+            // console.log(ftpres);
+            ftpres.forEach(function(file) {
+                getFileNode(file, parent_id, path, inc, function(node){
+                    children.push(node);
+                });
+                inc++;
+            });
+            callback(children);
+        });
+    }
+
+    function getFileNode(file, parent_id, path, inc, callback){
+        var node = {};
+        node.name = file.name;
+        node.children = [];
+        node.id = parseInt(parent_id + '' + inc);
+
+        if(file.type == 0){
+            node.type = 'file';
+            callback(node);
+        } else {
+            node.type = 'folder';
+            getDirContent(path + node.name, node.id, function(children){
+                node.children = children;
+                callback(node);
+            });
+        }
+    }
+
     return {
 
         // ---- READ SINGLE ----
@@ -48,14 +83,23 @@ module.exports = function (ftp) {
         // Get all remotes that belongs to one user
         list: function (req, res) {
             console.log('GETTING FILES LIST ...');
-            var fileTree = {};
-
-            ftp.ls(".", function(err, res) {
-              res.forEach(function(file) {
-                console.log(file.name);
-              });
+            var fileTree = {
+                id : 'root',
+                name : 'Root',
+                type : 'folder',
+                children : []
+            };
+            
+            getDirContent('', null, function(children){
+                fileTree.children = children;
             });
 
+            console.log('**************************************');
+
+            setTimeout(function(){
+                console.log(fileTree);
+                res.send(fileTree);
+            }, 1000);
             return true;
         }
 
